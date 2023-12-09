@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>束海涛的Curriculum Vitae</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .main {
+            width: 100vw;
+            height: 100vw;
+            background: url(bg.png) center center no-repeat;
+            background-size: cover;
+        }
+
+        h3 {
+            margin: 15px auto;
+        }
+
+        #main_rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+        }
+
+        .rain {
+            position: absolute;
+            width: 2px;
+            height: 50px;
+            background: linear-gradient(rgba(255, 255, 255, .3), rgba(255, 255, 255, .6));
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div id="main_rain">
+            <h1 style="text-align: center;margin: 50px auto;">Curriculum Vitae</h1>
+            <div style="width: 1000px;margin: 0 auto;">
+                <h3>Personal Data</h3>
+                Gender: Male<br>
+                Date of birth: 2003.10.21<br>
+                Nationality: Anhui<br>
+                Political outlook: the masses<br>
+                Major: Computer Science and Technology<br>
+                Education: High school<br>
+                Height: 175cm
+                <h3>Contact</h3>
+                Mobile: 17766367587<br>
+                Mailbox: 3196055646@qq.com<br>
+                Address: Suzhou, Jiangsu
+                <h3>Education</h3>
+                2019.9-2022.6 Zhoushi Senior High School High School<br>
+                2022.9-presently Wuxi Taihu University undergraduate<br>
+                <h3>Major Courses</h3>
+                Academic English, IELTS, Project Management, Computer Systems, Python, Software
+                Project Cards and Practice，Web Development Technology, Advanced Mathematics,
+                College Physics
+                <h3>Personal honors</h3>
+                During my high school years, I won many "three good students in the school" and
+                "three good students in the city"<br>
+                During high school, he won the third prize in the ice hockey competition<br>
+                During college, he served as a class president and won the "Excellent Cadre"
+                <h3>Personal introduction</h3>
+                I have a strong self-learning ability, work seriously and steadfastly, and strive to do
+                the best in the task at hand.You can work independently or in a team to bring out the
+                best in each person. I also have strong professional knowledge and computer skills,
+                and I have 13 years of English learning, so I also have strong English skills
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const box = document.getElementById('main_rain');
+        let boxHeight = box.clientHeight;
+        let boxWidth = box.clientWidth;
+        window.onresize = function () {
+            boxHeight = box.clientHeight;
+            boxWidth = box.clientWidth
+        }
+        setInterval(() => {
+            const rain = document.createElement('div');
+            rain.classList.add('rain');
+            rain.style.top = 0
+            rain.style.left = Math.random() * boxWidth + 'px';
+            rain.style.opacity = Math.random();
+            box.appendChild(rain);
+            let race = 1;
+            const timer = setInterval(() => {
+                if (parseInt(rain.style.top) > boxHeight) {
+                    clearInterval(timer);
+                    box.removeChild(rain);
+                }
+                race++;
+                rain.style.top = parseInt(rain.style.top) + race + 'px'
+            }, 20)
+        }, 50)
+    </script>
+
+</body>
+
+</html>
